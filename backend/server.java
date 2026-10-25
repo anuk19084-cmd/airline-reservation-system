@@ -18,7 +18,7 @@ public class Server {
                 HttpServer.create(
                         new InetSocketAddress(8080), 0);
         Path projectFolder =
-                Paths.get("..")
+                Paths.get("..","frontend")
                         .toAbsolutePath()
                         .normalize();
         server.createContext("/", exchange -> {
