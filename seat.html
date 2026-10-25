@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Select Your Seat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1> SELECT YOUR SEAT</h1>
+
+    <h2>Choose a Seat</h2>
+
+    <div class="seat">
+
+        <button onclick="selectSeat('A1')">A1</button>
+        <button onclick="selectSeat('A2')">A2</button>
+        <button onclick="selectSeat('A3')">A3</button>
+        <button onclick="selectSeat('A4')">A4</button>
+
+
+        <br><br>
+
+        <button onclick="selectSeat('B1')">B1</button>
+        <button onclick="selectSeat('B2')">B2</button>
+        <button onclick="selectSeat('B3')">B3</button>
+        <button onclick="selectSeat('B4')">B4</button>
+
+
+        <br><br>
+
+        <button onclick="selectSeat('C1')">C1</button>
+        <button onclick="selectSeat('C2')">C2</button>
+        <button onclick="selectSeat('C3')">C3</button>
+        <button onclick="selectSeat('C4')">C4</button>
+
+        <br><br>
+
+        <button onclick="selectSeat('D1')">D1</button>
+        <button onclick="selectSeat('D2')">D2</button>
+        <button onclick="selectSeat('D3')">D3</button>
+        <button onclick="selectSeat('D4')">D4</button>
+
+        <br><br>
+
+        <button onclick="selectSeat('E1')">E1</button>
+        <button onclick="selectSeat('E2')">E2</button>
+        <button onclick="selectSeat('E3')">E3</button>
+        <button onclick="selectSeat('E4')">E4</button>
+
+
+    </div>
+
+    <br>
+
+    <button onclick="goToPayment()">Continue</button>
+    <script>
+    function selectSeat(seat) {
+        localStorage.setItem("selectedSeat", seat);
+        alert("You selected seat " + seat);
+    } 
+    </script>
+    <script>
+    function goToPayment() {
+        window.location.href = "payment.html"
+    }
+    </script>
+
+</body>
+</html>

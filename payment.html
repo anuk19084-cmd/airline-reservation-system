@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>✈️ Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1> PAYMENT</h1>
+
+    <h2>Select Payment Method</h2>
+
+    <form class="booking-form">
+
+        <label>Payment Method:</label>
+
+        <select>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+            <option>Net Banking</option>
+        </select>
+
+        <br><br>
+
+        <label>Card / UPI Number:</label>
+        <input type="text" placeholder="Enter payment details">
+
+        <br><br>
+
+        <button type="button" onclick="completePayment()">Pay Now</button>
+
+    </form>
+<script>
+function completePayment() {
+    window.location.href = "confirmation.html";
+}
+</script>
+
+</body>
+</html>

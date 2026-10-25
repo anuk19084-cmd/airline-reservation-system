@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>MY BOOKINGS</h1>
+
+<div id="bookingResults">
+    Loading bookings...
+</div>
+
+<script>
+
+fetch("/api/mybookings")
+.then(response => {
+
+    if (!response.ok) {
+        throw new Error("Server error");
+    }
+
+    return response.json();
+
+})
+.then(bookings => {
+
+    let output = "";
+
+    bookings.forEach(booking => {
+
+        output += `
+        <div class="flight">
+
+            <h3>${booking.airline}</h3>
+
+            <p>Passenger: ${booking.passenger_name}</p>
+
+            <p>Seat: ${booking.seat}</p>
+
+            <p>PNR: ${booking.pnr}</p>
+
+            <p>Payment: ${booking.payment_method}</p>
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById("bookingResults").innerHTML = output;
+
+})
+.catch(error => {
+
+    document.getElementById("bookingResults").innerHTML =
+        "Could not load bookings.";
+
+    console.log(error);
+
+});
+
+</script>
+
+</body>
+</html>

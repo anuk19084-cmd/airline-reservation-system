@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>BOOKING CONFIRMED</h1>
+
+    <div class="booking-form">
+
+        <h2> Your Ticket</h2>
+
+        <p><strong>Airline:</strong> <span id="selectedAirline"></span></p>
+        <p><strong>Route:</strong> Dubai &rarr; Cochin</p>
+        <p><strong>Passenger:</strong> <span id="passengerName"></span></p>
+        <p><strong>Seat:</strong> <span id="selectedSeat"></span></p>
+        <p><strong>PNR:</strong> <span id="pnr"></span></p>
+
+        <h3>Thank you for booking with us!</h3>
+
+    </div>
+        <script>
+        let name = localStorage.getItem("passengerName");
+        document.getElementById("passengerName").textContent = name;
+
+        let seat = localStorage.getItem("selectedSeat");
+        document.getElementById("selectedSeat").textContent = seat;
+
+        let airline = localStorage.getItem("selectedAirline");
+        document.getElementById("selectedAirline").textContent = airline;
+
+        let pnr = "AIR" + Math.floor(1000 + Math.random() * 90000);
+        document.getElementById("pnr").textContent = pnr;
+        let paymentMethod = localStorage.getItem("paymentMethod");
+
+fetch("/api/bookings", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+        "passengerName=" + encodeURIComponent(name) +
+        "&airline=" + encodeURIComponent(airline) +
+        "&seat=" + encodeURIComponent(seat) +
+        "&pnr=" + encodeURIComponent(pnr) +
+        "&paymentMethod=" + encodeURIComponent(paymentMethod)
+})
+.then(response => response.text())
+.then(message => {
+    console.log(message);
+})
+.catch(error => {
+    console.log(error);
+});
+window.location.href = "mybookings.html"
+        </script>
+
+
+</body>
+</html>

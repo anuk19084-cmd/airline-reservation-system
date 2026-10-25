@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Flight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1> Add Flight</h1>
+
+<p>Enter flight details:</p>
+
+<input type="text" id="airline" placeholder="Airline">
+<br><br>
+
+<input type="text" id="origin" placeholder="Origin">
+<br><br>
+
+<input type="text" id="destination" placeholder="Destination">
+<br><br>
+
+<input type="text" id="departure" placeholder="Departure Time">
+<br><br>
+
+<input type="text" id="arrival" placeholder="Arrival Time">
+<br><br>
+
+<input type="number" id="price" placeholder="Price">
+<br><br>
+
+<button onclick="addFlight()">Add Flight</button>
+
+<script>
+
+function addFlight() {
+
+    let airline = document.getElementById("airline").value;
+    let origin = document.getElementById("origin").value;
+    let destination = document.getElementById("destination").value;
+    let departure = document.getElementById("departure").value;
+    let arrival = document.getElementById("arrival").value;
+    let price = document.getElementById("price").value;
+
+    fetch("/api/addflight", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body:
+            "airline=" + encodeURIComponent(airline) +
+            "&origin=" + encodeURIComponent(origin) +
+            "&destination=" + encodeURIComponent(destination) +
+            "&departure=" + encodeURIComponent(departure) +
+            "&arrival=" + encodeURIComponent(arrival) +
+            "&price=" + encodeURIComponent(price)
+    })
+    .then(response => response.text())
+    .then(message => {
+        alert(message);
+    })
+    .catch(error => {
+        alert("Add flight failed!");
+        console.log(error);
+    });
+
+}
+
+
+</script>
+
+</body>
+
+</html>

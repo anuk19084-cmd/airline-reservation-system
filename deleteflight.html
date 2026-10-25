@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Flight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>✈️ Delete Flight</h1>
+
+<p>Enter the Flight ID to delete the flight.</p>
+
+<input type="number" id="flightId" placeholder="Enter Flight ID">
+
+<br><br>
+
+<button onclick="deleteFlight()">Delete Flight</button>
+
+<script>
+
+function deleteFlight() {
+
+    let id = document.getElementById("flightId").value;
+
+    if (id === "") {
+        alert("Please enter Flight ID");
+        return;
+    }
+
+    fetch("/api/deleteflight", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "id=" + encodeURIComponent(id)
+})
+.then(response => response.text())
+.then(message => {
+    alert(message);
+})
+.catch(error => {
+    alert("Delete failed!");
+    console.log(error);
+});
+
+}
+
+</script>
+
+</body>
+
+</html>

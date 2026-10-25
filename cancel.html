@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Ticket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>✈️ Cancel Ticket</h1>
+
+<p>Enter your PNR number to cancel your booking.</p>
+
+<input type="text" id="pnr" placeholder="Enter PNR">
+
+<br><br>
+
+<button onclick="cancelBooking()">Cancel Ticket</button>
+
+<script>
+
+function cancelBooking() {
+
+    let pnr = document.getElementById("pnr").value;
+
+    if (pnr === "") {
+        alert("Please enter your PNR");
+        return;
+    }
+
+    fetch("/api/cancel", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "pnr=" + encodeURIComponent(pnr)
+})
+.then(response => response.text())
+.then(message => {
+    alert(message);
+})
+.catch(error => {
+    alert("Cancellation failed!");
+    console.log(error);
+});
+
+}
+
+</script>
+
+</body>
+</html>

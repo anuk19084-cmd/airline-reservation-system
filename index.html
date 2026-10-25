@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Airline Reservation System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1> AIRLINE RESERVATION SYSTEM</h1>
+    <p>Book your flight easily and quickly.</p>
+    <h2>Search Flights</h2>
+
+<div class="search-box">
+
+    <div class="form-row">
+        <label for="from">From:</label>
+        <input
+            type="text"
+            id="from"
+            placeholder="Departure city">
+    </div>
+
+    <div class="form-row">
+        <label for="to">To:</label>
+        <input
+            type="text"
+            id="to"
+            placeholder="Arrival city">
+    </div>
+
+    <div class="form-row">
+        <label for="date">Date:</label>
+        <input
+            type="date"
+            id="date">
+    </div>
+
+    
+    <button onclick="searchFlights()">
+        Search Flights
+    </button>
+
+</div>
+
+<div id="flightResults"></div>
+
+</body>
+</html>
