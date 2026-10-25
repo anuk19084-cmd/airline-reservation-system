@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Your Flight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>BOOK YOUR FLIGHT</h1>
+    <div class=""selected_flight">
+        <h2>Selected Flight</h2>
+        <p><strong>Airline:</strong> <spanid="selectedAirline"></span></p>
+    </div>
+
+    <h2>Passenger Details</h2>
+
+    <form class="booking-form">
+        <label>Passenger Name:</label>
+        <input type="text" id="passengerName" placeholder="Enter your name">
+
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" placeholder="Enter your age">
+
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" placeholder="Enter your email">
+
+        <br><br>
+
+        <label>Phone:</label>
+        <input type="tel" placeholder="Enter phone number">
+
+        <br><br>
+
+        <button type="button" onclick="goToSeat()">Continue Booking</button>
+    </form>
+    <script>
+    function goToSeat() {
+    let name = document.getElementById("passengerName").value;
+
+    localStorage.setItem("passengerName", name);
+
+    window.location.href = "seat.html";
+
+
+    }
+    let airline = localStorage.getItem("selectedAirline");
+    document.getElementById("selectedAirline").textContent = airline;
+
+    </script>
+
+</body>
+</html>
